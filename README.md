@@ -1,6 +1,10 @@
 # MediSense
 Repo to house the information relating to my teams implementation for the [AWS IoT App Hackathon](https://awsiot.devpost.com)
 
+## AWS Data Flow
+
+![images/aws-data-flow.png](images/aws-data-flow.png)
+
 ## Setup Guide
 
 ### ESP32 / ESP8266
