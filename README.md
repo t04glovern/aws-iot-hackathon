@@ -7,7 +7,7 @@ Repo to house the information relating to my teams implementation for the [AWS I
 
 ### Schematic
 
-
+![images/esp32-design.png](images/esp32-design.png)
 
 ### Flashing
 
