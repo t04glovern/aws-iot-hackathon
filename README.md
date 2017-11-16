@@ -1,4 +1,4 @@
-# AWS IoT App Hackathon
+# MediSense - AWS IoT App Hackathon
 Repo to house the information relating to my teams implementation for the [AWS IoT App Hackathon](https://awsiot.devpost.com)
 
 ## Setup Guide
@@ -7,7 +7,7 @@ Repo to house the information relating to my teams implementation for the [AWS I
 
 ### Schematic
 
-
+![images/esp32-design.png](images/esp32-design.png)
 
 ### Flashing
 
