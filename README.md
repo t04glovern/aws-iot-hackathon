@@ -46,6 +46,7 @@ The NodeRed dashboard is the presentation layer of the system, converting the ra
 
 ## Alerts
 Given how it's very difficult to determine whether a seizure is occurring by picking a threshold value in the time domain, we chose to use a Discrete Fourier Transform to analyse the signal in the frequency domain, focusing on the most likely human oscillations, the 1Hz to 8Hz region.
+
 ![images/Wrist_Normal_With_Shaking.gif](images/Wrist_Normal_With_Shaking.gif)
 
 ##  Future Work
