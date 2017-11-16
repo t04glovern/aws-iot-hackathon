@@ -5,11 +5,11 @@ Repo to house the information relating to my teams implementation for the [AWS I
 
 ### ESP32 / ESP8266
 
-### Schematic
+#### Schematic
 
 ![images/esp32-design.png](images/esp32-design.png)
 
-### Flashing
+#### Flashing
 
 Our design utilizes a ESP32 or ESP8266 microcontroller. The code we used to flash our board can be found in the [t04glovern/esp32-mqtt-publish](https://github.com/t04glovern/esp32-mqtt-publish) repository.
 
@@ -28,4 +28,14 @@ aws-pub [Success]: {"thing_id":"thing-01","timestamp":1510856415,"accl_x":-0.263
 
 The JSON playload being printed to serial is the payload sent to AWS IoT over its MQTT provider.
 
-###
+### NodeRed
+
+#### Flow
+
+The Flow file for this configuration can be found in [misc/AWS-SpasmTracker](misc/AWS-SpasmTracker)
+
+![images/node-red-flow.png](images/node-red-flow.png)
+
+#### Dashboard
+
+![images/node-red-dashboard.png](images/node-red-dashboard.png)
