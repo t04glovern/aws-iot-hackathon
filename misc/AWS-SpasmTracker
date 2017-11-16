@@ -1,0 +1,992 @@
+[
+    {
+        "id": "9829fa9e.d04598",
+        "type": "tab",
+        "label": "AWS-SpasmTracker",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d568bf5.3fc6e4",
+        "type": "tls-config",
+        "z": "",
+        "name": "esp32-mqtt-things",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "certificate.pem.crt",
+        "keyname": "private.pem.key",
+        "caname": "aws-root.pem",
+        "verifyservercert": true
+    },
+    {
+        "id": "868d11ed.5cf74",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "a1rd1iyp1hd37.iot.ap-southeast-2.amazonaws.com",
+        "port": "8883",
+        "tls": "d568bf5.3fc6e4",
+        "clientid": "esp32-mqtt-nodered",
+        "usetls": true,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "6239e397.14f64c",
+        "type": "amazon config",
+        "z": "",
+        "name": "AWS",
+        "region": "ap-southeast-2"
+    },
+    {
+        "id": "56081c1f.e3d1f4",
+        "type": "mongodb",
+        "z": "",
+        "hostname": "192.168.188.232",
+        "port": "27017",
+        "db": "esp32-iot",
+        "name": "esp32-iot-mongodb"
+    },
+    {
+        "id": "2157e0e7.5beea",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#5185f2",
+                "baseFont": "Verdana,Verdana,Geneva,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#5185f2",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#98b7f7",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#5185f2",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Verdana,Verdana,Geneva,sans-serif"
+                }
+            }
+        },
+        "site": {
+            "name": "ESP32-IoT Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "6b607b8e.59fec4",
+        "type": "ui_tab",
+        "z": "",
+        "name": "MediSense - Spasm Tracker",
+        "icon": "dashboard"
+    },
+    {
+        "id": "7aae9446.d51b3c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Accelerometer Historical",
+        "tab": "6b607b8e.59fec4",
+        "order": 2,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "59a87b07.cf2e74",
+        "type": "ui_group",
+        "z": "",
+        "name": "Accelerometer Raw",
+        "tab": "6b607b8e.59fec4",
+        "order": 1,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "d1070fcd.7724e",
+        "type": "mqtt in",
+        "z": "9829fa9e.d04598",
+        "name": "esp32-mqtt-thing-01 In",
+        "topic": "esp32-mqtt-thing-01/accelerometer_out",
+        "qos": "0",
+        "broker": "868d11ed.5cf74",
+        "x": 192,
+        "y": 137,
+        "wires": [
+            [
+                "273e93e8.194b1c"
+            ]
+        ]
+    },
+    {
+        "id": "273e93e8.194b1c",
+        "type": "json",
+        "z": "9829fa9e.d04598",
+        "name": "",
+        "pretty": false,
+        "x": 212,
+        "y": 228,
+        "wires": [
+            [
+                "acbb69e2.2194b8",
+                "bb7b010b.d3961"
+            ]
+        ]
+    },
+    {
+        "id": "acbb69e2.2194b8",
+        "type": "mongodb out",
+        "z": "9829fa9e.d04598",
+        "mongodb": "56081c1f.e3d1f4",
+        "name": "",
+        "collection": "acclerometer",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 522,
+        "y": 143,
+        "wires": []
+    },
+    {
+        "id": "a1cf1add.542f58",
+        "type": "ui_gauge",
+        "z": "9829fa9e.d04598",
+        "name": "",
+        "group": "59a87b07.cf2e74",
+        "order": 1,
+        "width": "4",
+        "height": "3",
+        "gtype": "gage",
+        "title": "X axis",
+        "label": "m/s^2",
+        "format": "{{value  | number:2}}",
+        "min": "-12",
+        "max": "12",
+        "colors": [
+            "#495d6c",
+            "#5185f2",
+            "#495d6c"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 641.9999961853027,
+        "y": 419.00004386901855,
+        "wires": []
+    },
+    {
+        "id": "2faa6486.5796ac",
+        "type": "template",
+        "z": "9829fa9e.d04598",
+        "name": "accl_x",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{payload.accl_x}}",
+        "x": 316.65081787109375,
+        "y": 418.53973388671875,
+        "wires": [
+            [
+                "9cecb1ab.41de6"
+            ]
+        ]
+    },
+    {
+        "id": "18bfd29b.3f76fd",
+        "type": "ui_gauge",
+        "z": "9829fa9e.d04598",
+        "name": "",
+        "group": "59a87b07.cf2e74",
+        "order": 2,
+        "width": "4",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Y axis",
+        "label": "m/s^2",
+        "format": "{{value  | number:2}}",
+        "min": "-12",
+        "max": "12",
+        "colors": [
+            "#495d6c",
+            "#5185f2",
+            "#495d6c"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 640.4285850524902,
+        "y": 464.46037101745605,
+        "wires": []
+    },
+    {
+        "id": "a0e91071.c75c5",
+        "type": "template",
+        "z": "9829fa9e.d04598",
+        "name": "accl_y",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{payload.accl_y}}",
+        "x": 313.9524269104004,
+        "y": 464.3651080131531,
+        "wires": [
+            [
+                "19e6de56.357df2"
+            ]
+        ]
+    },
+    {
+        "id": "a3c7afa7.482f5",
+        "type": "template",
+        "z": "9829fa9e.d04598",
+        "name": "accl_z",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{payload.accl_z}}",
+        "x": 311.0476608276367,
+        "y": 510.0159237384796,
+        "wires": [
+            [
+                "2d2be524.352b5a"
+            ]
+        ]
+    },
+    {
+        "id": "9aeb8e1c.e575f",
+        "type": "template",
+        "z": "9829fa9e.d04598",
+        "name": "accl_mag",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{payload.accl_mag}}",
+        "x": 319.4762535095215,
+        "y": 555.3651947975159,
+        "wires": [
+            [
+                "e7868bab.baf028"
+            ]
+        ]
+    },
+    {
+        "id": "9cecb1ab.41de6",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_x",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "accl_x",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 469.82538986206055,
+        "y": 418.8413119316101,
+        "wires": [
+            [
+                "a1cf1add.542f58"
+            ]
+        ]
+    },
+    {
+        "id": "19e6de56.357df2",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_y",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "accl_y",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470.1745948791504,
+        "y": 464.80958890914917,
+        "wires": [
+            [
+                "18bfd29b.3f76fd"
+            ]
+        ]
+    },
+    {
+        "id": "2d2be524.352b5a",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_z",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "accl_z",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 468.34919357299805,
+        "y": 510.3334074020386,
+        "wires": [
+            [
+                "1ab9b76c.218dd9"
+            ]
+        ]
+    },
+    {
+        "id": "e7868bab.baf028",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_mag",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "accl_mag",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 476.63501739501953,
+        "y": 555.2223219871521,
+        "wires": [
+            [
+                "7dda8fe.f0b817",
+                "2a947c66.6165c4"
+            ]
+        ]
+    },
+    {
+        "id": "65a03fa1.8870b",
+        "type": "ui_toast",
+        "z": "9829fa9e.d04598",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 946.1229248046875,
+        "y": 622.1231088638306,
+        "wires": []
+    },
+    {
+        "id": "7dda8fe.f0b817",
+        "type": "switch",
+        "z": "9829fa9e.d04598",
+        "name": "CheckSpasm",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "12",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 574.5399169921875,
+        "y": 622.0950937271118,
+        "wires": [
+            [
+                "464a04bd.21efbc"
+            ]
+        ]
+    },
+    {
+        "id": "464a04bd.21efbc",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic notify",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Possible Spasm Detected",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 748.817626953125,
+        "y": 622.5674448013306,
+        "wires": [
+            [
+                "65a03fa1.8870b",
+                "ab0af47d.d6cda8"
+            ]
+        ]
+    },
+    {
+        "id": "1ab9b76c.218dd9",
+        "type": "ui_gauge",
+        "z": "9829fa9e.d04598",
+        "name": "",
+        "group": "59a87b07.cf2e74",
+        "order": 3,
+        "width": "4",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Z axis",
+        "label": "m/s^2",
+        "format": "{{value  | number:2}}",
+        "min": "-3",
+        "max": "22",
+        "colors": [
+            "#495d6c",
+            "#5185f2",
+            "#495d6c"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 642.5239219665527,
+        "y": 510.42863273620605,
+        "wires": []
+    },
+    {
+        "id": "bb7b010b.d3961",
+        "type": "link out",
+        "z": "9829fa9e.d04598",
+        "name": "esp32-accl-link",
+        "links": [
+            "3be98f53.db9e5"
+        ],
+        "x": 286,
+        "y": 328,
+        "wires": []
+    },
+    {
+        "id": "3be98f53.db9e5",
+        "type": "link in",
+        "z": "9829fa9e.d04598",
+        "name": "",
+        "links": [
+            "bb7b010b.d3961"
+        ],
+        "x": 126,
+        "y": 464.0000305175781,
+        "wires": [
+            [
+                "2faa6486.5796ac",
+                "a0e91071.c75c5",
+                "a3c7afa7.482f5",
+                "9aeb8e1c.e575f",
+                "11504282.d3a8ed"
+            ]
+        ]
+    },
+    {
+        "id": "6824f147.2fba3",
+        "type": "ui_button",
+        "z": "9829fa9e.d04598",
+        "name": "",
+        "group": "7aae9446.d51b3c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Toggle Realtime Data",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-cloud",
+        "payload": "toggle-realtime",
+        "payloadType": "str",
+        "topic": "",
+        "x": 472,
+        "y": 326,
+        "wires": [
+            [
+                "6fce960e.482408"
+            ]
+        ]
+    },
+    {
+        "id": "6fce960e.482408",
+        "type": "mqtt out",
+        "z": "9829fa9e.d04598",
+        "name": "esp32-mqtt-thing-01 Poll",
+        "topic": "esp32-mqtt-thing-01/feedback_in",
+        "qos": "0",
+        "retain": "false",
+        "broker": "868d11ed.5cf74",
+        "x": 734,
+        "y": 325,
+        "wires": []
+    },
+    {
+        "id": "2a947c66.6165c4",
+        "type": "ui_chart",
+        "z": "9829fa9e.d04598",
+        "name": "",
+        "group": "7aae9446.d51b3c",
+        "order": 1,
+        "width": "12",
+        "height": "7",
+        "label": "Magnitude of Spasm",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": true,
+        "ymin": "-6",
+        "ymax": "25",
+        "removeOlder": "2",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#0092ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": true,
+        "x": 703,
+        "y": 555.0000009536743,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "963dd92d.301d28",
+        "type": "ui_audio",
+        "z": "9829fa9e.d04598",
+        "name": "SpasmDetected",
+        "group": "7aae9446.d51b3c",
+        "voice": "en-US",
+        "always": "",
+        "x": 1142,
+        "y": 621.0000009536743,
+        "wires": []
+    },
+    {
+        "id": "ab0af47d.d6cda8",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "Text to speech spasm",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Possible Spasm Detected",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 953,
+        "y": 580.0000009536743,
+        "wires": [
+            [
+                "963dd92d.301d28"
+            ]
+        ]
+    },
+    {
+        "id": "11504282.d3a8ed",
+        "type": "template",
+        "z": "9829fa9e.d04598",
+        "name": "accl_fft",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{payload.accl_fft}}",
+        "output": "str",
+        "x": 205.1111297607422,
+        "y": 809.9999942779541,
+        "wires": [
+            [
+                "837847ca.bb7da8"
+            ]
+        ]
+    },
+    {
+        "id": "720d70e0.38f7b",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_fft[0]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "1 Hz",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Frequency",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 646.8888092041016,
+        "y": 714.4444303512573,
+        "wires": [
+            [
+                "18be1385.3f7c8c"
+            ]
+        ]
+    },
+    {
+        "id": "1663712e.123aaf",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_fft[1]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "2 Hz",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Frequency",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 645.8888092041016,
+        "y": 754.4444303512573,
+        "wires": [
+            [
+                "18be1385.3f7c8c"
+            ]
+        ]
+    },
+    {
+        "id": "5329fc24.eca3b4",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_fft[2]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "3 Hz",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Frequency",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 645.8888092041016,
+        "y": 792.4444303512573,
+        "wires": [
+            [
+                "18be1385.3f7c8c"
+            ]
+        ]
+    },
+    {
+        "id": "c6ee3177.9d42f",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_fft[3]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "4 Hz",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Frequency",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 646.8888092041016,
+        "y": 830.4444303512573,
+        "wires": [
+            [
+                "18be1385.3f7c8c"
+            ]
+        ]
+    },
+    {
+        "id": "b24900a0.f5a1",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_fft[4]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "5 Hz",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Frequency",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 646.8888092041016,
+        "y": 867.4444303512573,
+        "wires": [
+            [
+                "18be1385.3f7c8c"
+            ]
+        ]
+    },
+    {
+        "id": "136e53b8.68c91c",
+        "type": "change",
+        "z": "9829fa9e.d04598",
+        "name": "topic accl_fft[5]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "6 Hz",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Frequency",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 645.8888092041016,
+        "y": 904.4444303512573,
+        "wires": [
+            [
+                "18be1385.3f7c8c"
+            ]
+        ]
+    },
+    {
+        "id": "18be1385.3f7c8c",
+        "type": "ui_chart",
+        "z": "9829fa9e.d04598",
+        "name": "Frequency of Spasm",
+        "group": "59a87b07.cf2e74",
+        "order": 0,
+        "width": "12",
+        "height": "5",
+        "label": "Magnitude of Spasm (Over Time)",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "colors": [
+            "#5185f2",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": true,
+        "x": 969.9998741149902,
+        "y": 807.3332920074463,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "837847ca.bb7da8",
+        "type": "function",
+        "z": "9829fa9e.d04598",
+        "name": "Array Parse",
+        "func": "var parts = msg.payload.split(\",\");\nvar message1 = { payload: parts[0] }\nvar message2 = { payload: parts[1] }\nvar message3 = { payload: parts[2] }\nvar message4 = { payload: parts[3] }\nvar message5 = { payload: parts[4] }\nvar message6 = { payload: parts[5] }\nreturn [message1, message2, message3, message4, message5, message6];",
+        "outputs": "6",
+        "noerr": 0,
+        "x": 383.3332939147949,
+        "y": 809.5554056167603,
+        "wires": [
+            [
+                "720d70e0.38f7b"
+            ],
+            [
+                "1663712e.123aaf"
+            ],
+            [
+                "5329fc24.eca3b4"
+            ],
+            [
+                "c6ee3177.9d42f"
+            ],
+            [
+                "b24900a0.f5a1"
+            ],
+            [
+                "136e53b8.68c91c"
+            ]
+        ]
+    }
+]
