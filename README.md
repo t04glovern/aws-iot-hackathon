@@ -49,7 +49,7 @@ Given how it's very difficult to determine whether a seizure is occurring by pic
 
 ![images/Wrist_Normal_With_Shaking.gif](images/Wrist_Normal_With_Shaking.gif)
 
-##Security
+## Security
 Using Amazon services to stream data from the devices ensures that confidential data is kept secure through its certificate based encryption, while [AWS HIPPA complaint cloud storage](https://aws.amazon.com/compliance/hipaa-compliance/)  means that patient data can be stored in secure scalable storage, with these two factors facilitating an easier path to HIPPA compliance.
 
 ##  Future Work
