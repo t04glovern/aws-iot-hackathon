@@ -49,12 +49,14 @@ Given how it's very difficult to determine whether a seizure is occurring by pic
 
 ![images/Wrist_Normal_With_Shaking.gif](images/Wrist_Normal_With_Shaking.gif)
 
+##Security
+Using Amazon services to stream data from the devices ensures that confidential data is kept secure through its certificate based encryption, while [AWS HIPPA complaint cloud storage](https://aws.amazon.com/compliance/hipaa-compliance/)  means that patient data can be stored in secure scalable storage, with these two factors facilitating an easier path to HIPPA compliance.
+
 ##  Future Work
 There are three real areas for future work.
 
  - Size
  - Power Consumption
- - Systems Integration
  
 ### Size
 Our Prototype is currently small, but it can be a lot smaller by reducing the "modules" into a PCB board, the schematics of which have already been designed using a [MPU-9250 accelerometer](https://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf), [ESP-WROOM32 microcontroller](http://espressif.com/sites/default/files/documentation/esp-wroom-32_datasheet_en.pdf),  [TP4056 single cell charger](https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdfa), [AMS117 3.3v voltage regulator](http://www.advanced-monolithic.com/pdf/ds1117.pdf) as well as a few discrete resistors and capacitors and other miscellaneous components.
@@ -67,13 +69,5 @@ Attempting to combine all of the modules on a single component is advantageous a
  We reviewed some of the literature related to trying to power the device while it's attached to a person via a small peltier cooler, which generates power through the difference of temperature between its two sides but discovered quickly that the amount of power generated was going to be [negligible, with an expected harvesting of 30μW at a 15 Degree Celsius temperature difference](http://ieeexplore.ieee.org/abstract/document/5475111/) and wasn't worth the trade off of extra size and circuit complexity. Therefore instead of having the device even partially self powered, we needed to consider ways to minimize power consumption.
  
  The main method to reduce power consumption is to focus on the wireless radio part of the circuit, as there's a large difference between current consumption while transmitting (120mA) and not transmitting (15mA). Utilizing either the esp32s 4mb of flash memory or external EEPROM storage as a buffer to store data while the WIFI radio is turned off, then turn the radio on and send this data as a single burst.
-
-### Systems Integration
-
-Using Amazon services to stream data from the devices ensures that confidential data is kept secure through its certificate based encryption, while [AWS HIPPA complaint cloud storage](https://aws.amazon.com/compliance/hipaa-compliance/)  means that patient data can be stored in secure scalable storage, with these two factors facilitating an easier path to HIPPA compliance.
-
-**MUMBLE ABOUT THINGS TO ADD TO THIS
--text persons doctor if the seizures are extremly intense/last ages
-
 
 
